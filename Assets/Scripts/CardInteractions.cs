@@ -26,17 +26,19 @@ public class CardInteractions : MonoBehaviour, IPointerEnterHandler, IPointerExi
     public void OnBeginDrag(PointerEventData eventData)
     {
         _canvasGroup.blocksRaycasts = false;
-        _card.CurrentCardCollection.StartDraggingCard(gameObject);
     }
 
     public void OnDrag(PointerEventData eventData)
     {
         //follow mouse
         transform.position = eventData.position;
+        CardCollectionManager.StartDrag(_card);
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
         _canvasGroup.blocksRaycasts = true;
+        CardCollectionManager.StopDrag(_card);
+
     }
 }

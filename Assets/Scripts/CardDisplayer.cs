@@ -9,7 +9,7 @@ public class CardDisplayer
 
     private float _halfWidth = 0, _halfHeight = 0, _scaleFactor = 0;
 
-    private int _previousNumberOfCards = -1, _previousClosestElement = -1;
+    private int _previousClosestElement = -1;
     
     private Camera _cam;
 

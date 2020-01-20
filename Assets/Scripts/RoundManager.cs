@@ -7,7 +7,7 @@ public class RoundManager : MonoBehaviour
     public Action OnCombatStart, OnCombatEnd, OnShopStart, OnShopEnd;
 
     [SerializeField]
-    private float _initialDelay = 1f, _shopDuration = 10f, _battleDuration = 10f;
+    private float _shopDuration = 10f, _battleDuration = 10f;
     
     private State _currentState;
     private Type _shopState, _battleState;

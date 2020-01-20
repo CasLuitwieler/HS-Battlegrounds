@@ -6,9 +6,8 @@ using UnityEngine.EventSystems;
 public class Card : MonoBehaviour
 {
     public CardCollection CurrentCardCollection { get; private set; }
-    public void ChangeCurrentCollection(CardCollection cardCollection) => CurrentCardCollection = cardCollection;
-
-    private CardData _cardData;
+    public CardData CardData { get; private set; }
+    
     private CardUI _cardUI;
 
     private void Awake()
@@ -16,14 +15,21 @@ public class Card : MonoBehaviour
         _cardUI = GetComponent<CardUI>();
     }
 
-    public void SetDataAndUI(CardData data)
+    public void SetCurrentCardCollection(CardCollection cardCollection)
     {
-        _cardData = data;
-        _cardUI.AssignUI(data);
+        CurrentCardCollection = cardCollection;
+        transform.SetParent(cardCollection.transform);
     }
 
+    public void SetDataAndUI(CardData data)
+    {
+        CardData = data;
+        _cardUI.AssignUI(data);
+    }
+    
     public void MoveTo(Vector3 targetPosition, float duration)
     {
+        //DOTween.Clear();
         transform.DOLocalMove(targetPosition, duration);
     }
 }
